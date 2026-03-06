@@ -1,4 +1,4 @@
-@Library('slack') _
+// @Library('slack') _
 
 
 /////// ******************************* Code for fectching Failed Stage Name ******************************* ///////
@@ -266,7 +266,7 @@ pipeline {
 		        /* Use slackNotifier.groovy from shared library and provide current build result as parameter */  
 		        env.failedStage = "none"
 		        env.emoji = ":white_check_mark: :tada: :thumbsup_all:" 
-		        sendNotification currentBuild.result
+		        // sendNotification currentBuild.result
 		      }
         }
 
@@ -276,7 +276,7 @@ pipeline {
 		      def failedStages = getFailedStages( currentBuild )
 	          env.failedStage = failedStages.failedStageName
 	          env.emoji = ":x: :red_circle: :sos:"
-		      sendNotification currentBuild.result
+		    //   sendNotification currentBuild.result
 		    }	
 	    }
     }

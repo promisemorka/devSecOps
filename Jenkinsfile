@@ -42,14 +42,14 @@ List<Map> getFailedStages( RunWrapper build ) {
 pipeline {
   agent any
 
-  environment {
-    deploymentName = "devsecops"
-    containerName = "devsecops-container"
-    serviceName = "devsecops-svc"
-    imageName = "siddharth67/numeric-app:${GIT_COMMIT}"
-    applicationURL="http://devsecops-demo.eastus.cloudapp.azure.com"
-    applicationURI="/increment/99"
-  }
+//   environment {
+//     deploymentName = "devsecops"
+//     containerName = "devsecops-container"
+//     serviceName = "devsecops-svc"
+//     imageName = "siddharth67/numeric-app:${GIT_COMMIT}"
+//     applicationURL="http://devsecops-demo.eastus.cloudapp.azure.com"
+//     applicationURI="/increment/99"
+//   }
 
   stages {
 
@@ -104,15 +104,15 @@ pipeline {
  //    }
     
 
- //    stage('Docker Build and Push') {
- //      steps {
- //        withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
- //          sh 'printenv'
- //          sh 'sudo docker build -t siddharth67/numeric-app:""$GIT_COMMIT"" .'
- //          sh 'docker push siddharth67/numeric-app:""$GIT_COMMIT""'
- //        }
- //      }
- //    }
+    stage('Docker Build and Push') {
+      steps {
+        withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+          sh 'printenv'
+          sh 'sudo docker build -t softoloye/devsecops-numeric-application:""$GIT_COMMIT"" .'
+          sh 'docker push softoloye/devsecops-numeric-application:""$GIT_COMMIT""'
+        }
+      }
+    }
 
  //    stage('Vulnerability Scan - Kubernetes') {
  //      steps {
